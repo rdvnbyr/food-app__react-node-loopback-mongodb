@@ -1,14 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+
+import { StyleProvider } from "./_context/StyleContext";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StyleProvider>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </StyleProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
