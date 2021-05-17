@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { darken } from "polished";
 
 const UIButtonWrapper = styled.button.attrs((props) => ({
   type: props.type || "button",
@@ -21,17 +20,18 @@ const UIButtonWrapper = styled.button.attrs((props) => ({
   outline: none;
   transition-property: background, box-shadow;
   transition-duration: 0.35s;
-  ${props => props.primary && {
-      background: '#5d2fdf'
-  }}
+  ${(props) =>
+    props.primary && {
+      background: "var(--primary-color)",
+    }}
   &:hover {
-    background: ${darken(0.125, '#5d2fdf')}
+    background: var(--primary-color-dark);
   }
   &:focus {
-    box-shadow: 0 0 0 1px #5d2fdf;
+    box-shadow: 0 0 0 1px var(--primary-color);
   }
   &:focus {
-    box-shadow: 0 0 0 1px #5d2fdf;
+    box-shadow: 0 0 0 1px var(--primary-color);
   }
 `;
 

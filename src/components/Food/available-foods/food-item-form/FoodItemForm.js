@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Input, UIButton } from "../../../UIElements";
+import { UIButton } from "../../../UIElements";
 
 
 const FormWrapper = styled.form`
@@ -9,7 +9,6 @@ const FormWrapper = styled.form`
 export const FoodItemForm = (props) => {
   return (
     <FormWrapper>
-      <Input type="number" input={props.item} defaultValue="1" min={1} max={5}/>
       <UIButton primary text="Add" />
     </FormWrapper>
   );
