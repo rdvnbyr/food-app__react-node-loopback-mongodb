@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const UIButton = (props) => {
+  return <UIButtonWrapper {...props}>{props.text}</UIButtonWrapper>;
+};
+
 const UIButtonWrapper = styled.button.attrs((props) => ({
   type: props.type || "button",
 }))`
@@ -20,21 +24,18 @@ const UIButtonWrapper = styled.button.attrs((props) => ({
   outline: none;
   transition-property: background, box-shadow;
   transition-duration: 0.35s;
-  ${(props) =>
-    props.primary && {
-      background: "var(--primary-color)",
-    }}
+  background: ${(props) => `var(--btn-color-${props.color})`};
   &:hover {
-    background: var(--primary-color-dark);
+    background: ${(props) => `var(--btn-color-${props.color}-hover)`};
   }
-  &:focus {
-    box-shadow: 0 0 0 1px var(--primary-color);
+  &:disabled {
+    background: var(--color-dark-gray);
+    border: 1px solid var(--color-dark-gray);
+    cursor: not-allowed;
   }
-  &:focus {
-    box-shadow: 0 0 0 1px var(--primary-color);
+  &:focus,
+  &:active {
+    background: ${(props) => `var(--btn-color-${props.color}-active)`};
+    box-shadow: 0 0 0 2px ${(props) => `var(--btn-color-${props.color}-active)`};
   }
 `;
-
-export const UIButton = (props) => {
-  return <UIButtonWrapper {...props}>{props.text}</UIButtonWrapper>;
-};

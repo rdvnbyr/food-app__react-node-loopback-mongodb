@@ -46,7 +46,9 @@
       }
     },
     "label": {
-      "type": ["string"]
+      "type": [
+        "string"
+      ]
     }
   },
   "validations": [],

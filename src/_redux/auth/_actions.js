@@ -1,44 +1,52 @@
-const PREFIX = "[auth]__";
+const PREFIX = "[auth]";
 
 export const authActionTypes = {
-  //*Get Products
+  //*Login
   LOGIN: `${PREFIX}LOGIN`,
   LOGIN_SUCCESS: `${PREFIX}LOGIN_SUCCESS`,
   LOGIN_FAIL: `${PREFIX}LOGIN_FAIL`,
 
-  //*Get Product
+  //*Register
   REGISTER: `${PREFIX}REGISTER`,
   REGISTER_SUCCESS: `${PREFIX}REGISTER_SUCCESS`,
   REGISTER_FAIL: `${PREFIX}REGISTER_FAIL`,
+
+  //*Logout
+  LOGOUT: `${PREFIX}LOGOUT`,
+  LOGOUT_SUCCESS: `${PREFIX}LOGOUT_SUCCESS`,
+  LOGOUT_FAIL: `${PREFIX}LOGOUT_FAIL`,
 };
 
 export const authActions = {
-  // Get Products Action
+  // Login Action
   login: {
-    call: (email, password) => {
+    call: (user) => {
       return {
         type: authActionTypes.LOGIN,
         payload: {
-          email,
-          password,
+          user,
         },
       };
     },
-    success: () => {
+    success: ({ user, access }) => {
       return {
         type: authActionTypes.LOGIN_SUCCESS,
+        payload: {
+          user,
+          access,
+        },
       };
     },
-    fail: () => {
+    fail: (error) => {
       return {
         type: authActionTypes.LOGIN_FAIL,
         payload: {
-          error: "Products fetching is failed.",
+          error,
         },
       };
     },
   },
-  // Get Product Action
+  // Register Action
   register: {
     call: (user) => {
       return {
@@ -48,16 +56,37 @@ export const authActions = {
         },
       };
     },
-    success: (product) => {
+    success: () => {
       return {
         type: authActionTypes.REGISTER_SUCCESS,
       };
     },
-    fail: () => {
+    fail: (error) => {
       return {
         type: authActionTypes.REGISTER_FAIL,
         payload: {
-          error: "Product fetching is failed.",
+          error,
+        },
+      };
+    },
+  },
+  // Logout Action
+  logout: {
+    call: () => {
+      return {
+        type: authActionTypes.LOGOUT,
+      };
+    },
+    success: () => {
+      return {
+        type: authActionTypes.LOGOUT_SUCCESS,
+      };
+    },
+    fail: (error) => {
+      return {
+        type: authActionTypes.LOGOUT_FAIL,
+        payload: {
+          error,
         },
       };
     },

@@ -17,9 +17,6 @@
     "emailVerified": {
       "type": "Boolean",
       "default": false
-    },
-    "image": {
-      "type": "string"
     }
   },
   "validations": [],
@@ -29,12 +26,6 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
-    },
-    {
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],

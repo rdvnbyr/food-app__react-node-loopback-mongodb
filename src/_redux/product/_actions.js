@@ -1,4 +1,4 @@
-const PREFIX = "[-product-]";
+const PREFIX = "[product]";
 
 export const productActionTypes = {
   GET_PRODUCTS: `${PREFIX}GET_PRODUCTS`,

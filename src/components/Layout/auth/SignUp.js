@@ -1,15 +1,16 @@
 import { useRef } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import { Field } from "formik";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
 import { FormikHandler } from "./FormikHandler";
 import { Input, UIButton } from "../../UIElements";
-import { Link } from "react-router-dom";
+import { authActions } from "../../../_redux/auth";
 
-const WrapperDiv = styled.div`
+const WrapperForm = styled.div`
   width: 600px;
-  margin: 10rem auto;
   & form {
     width: inherit;
   }
@@ -46,8 +47,8 @@ const signUpValidationSchema = Yup.object().shape({
     .email("Must be a valid email")
     .required("Email is required"),
   password: Yup.string()
-    .min(2, "Minimum 6 symbols")
-    .max(50, "Maximum 12 symbols")
+    .min(6, "Minimum 6 symbols")
+    .max(12, "Maximum 12 symbols")
     .required("Password is required"),
   repeatPassword: Yup.string().when("password", {
     is: (val) => (val && val.length > 0 ? true : false),
@@ -66,8 +67,15 @@ const initialValues = {
 };
 
 function SignupPage() {
+  const dispatch = useDispatch();
   const submitHandler = (values) => {
-    console.log(values);
+    const user = {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+    };
+
+    dispatch(authActions.register.call(user));
   };
 
   const btnRef = useRef();
@@ -78,7 +86,7 @@ function SignupPage() {
   };
 
   return (
-    <WrapperDiv>
+    <WrapperForm>
       <Title>SIGN UP</Title>
       <FormikHandler
         validationSchema={signUpValidationSchema}
@@ -145,9 +153,9 @@ function SignupPage() {
             <span className="mx-2 btn-link">Login</span>
           </Link>
         </div>
-        <UIButton primary text="Sign Up" onClick={buttonClickHandler} />
+        <UIButton color="primary" text="Sign Up" onClick={buttonClickHandler} />
       </ButtonWrapper>
-    </WrapperDiv>
+    </WrapperForm>
   );
 }
 

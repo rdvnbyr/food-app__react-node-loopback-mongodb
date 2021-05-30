@@ -9,7 +9,7 @@ const FormWrapper = styled.form`
 export const FoodItemForm = (props) => {
   return (
     <FormWrapper>
-      <UIButton primary text="Add" />
+      <UIButton color="primary" text="Add" />
     </FormWrapper>
   );
 };

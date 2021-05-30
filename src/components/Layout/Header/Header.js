@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-
 import HeaderCartButton from "./HeaderCartButton";
 import { HeaderLinks } from "./HeaderLinks";
 import { HeaderAuthLinks } from "./HeaderAuthLinks";
 
 const HeaderDiv = styled.header`
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
@@ -22,6 +22,12 @@ const HeaderDiv = styled.header`
     justify-content: space-between;
     align-items: center;
   }
+`;
+
+const AuthLinksWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 // const MainImageDiv = styled.div`
@@ -51,7 +57,10 @@ function Header() {
         <div className="content">
           <h3>JUST FOOD</h3>
           <HeaderLinks />
-          {!isLogin ? <HeaderAuthLinks /> : <HeaderCartButton />}
+          <AuthLinksWrapper>
+            {isLogin && <HeaderCartButton />}
+            <HeaderAuthLinks />
+          </AuthLinksWrapper>
         </div>
       </HeaderDiv>
     </>

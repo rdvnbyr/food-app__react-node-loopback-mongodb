@@ -1,5 +1,30 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+export function HeaderAuthLinks() {
+  const { isLogin } = useSelector((state) => ({
+    isLogin: state.auth.isLogin,
+  }));
+  return (
+    <AuthLinksWrapper>
+      {!isLogin ? (
+        <>
+          <NavLink exact to="/auth/login">
+            LOGIN
+          </NavLink>
+          <NavLink exact to="/auth/signup">
+            SIGNUP
+          </NavLink>
+        </>
+      ) : (
+        <NavLink exact to="/logout">
+          LOGOUT
+        </NavLink>
+      )}
+    </AuthLinksWrapper>
+  );
+}
 
 const AuthLinksWrapper = styled.div`
   display: flex;
@@ -16,16 +41,3 @@ const AuthLinksWrapper = styled.div`
     }
   }
 `;
-
-export function HeaderAuthLinks() {
-  return (
-    <AuthLinksWrapper>
-      <NavLink exact to="/login">
-        LOGIN
-      </NavLink>
-      <NavLink exact to="/signup">
-        SIGNUP
-      </NavLink>
-    </AuthLinksWrapper>
-  );
-}

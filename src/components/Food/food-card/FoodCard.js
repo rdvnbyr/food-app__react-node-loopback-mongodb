@@ -1,5 +1,83 @@
 import styled from "styled-components";
-import { ButtonGroup, IconButton, Button } from "@chakra-ui/react";
+import { ButtonGroup, IconButton, Button, Tooltip } from "@chakra-ui/react";
+
+function FoodCard(props) {
+  return (
+    <Card>
+      <ImageDiv>
+        <img src={props.image} alt={props.name} />
+      </ImageDiv>
+      <CardContent>
+        <ContentHeader>
+          <div>
+            <Tooltip label="Add to wishlist" fontSize="sm">
+              <IconButton
+                variant="ghost"
+                colorScheme="gray"
+                aria-label="Like"
+                fontSize="1.2rem"
+                icon={<i className="far fa-heart"></i>}
+              />
+            </Tooltip>
+            <> </>
+            <Tooltip label="Extend details" fontSize="sm">
+              <IconButton
+                variant="ghost"
+                colorScheme="gray"
+                aria-label="Info"
+                fontSize="1.2rem"
+                icon={<i className="fas fa-info-circle"></i>}
+              />
+            </Tooltip>
+          </div>
+          <h5>
+            <span
+              className={
+                props.promotion.isPromotion ? "promotion__span text-muted" : ""
+              }
+            >
+              ${props.price}
+            </span>
+            {props.promotion.isPromotion && (
+              <span className="mx-2 text-decoration-none">{`$${props.promotion.price}`}</span>
+            )}
+          </h5>
+        </ContentHeader>
+        <CardDescription>
+          <h5>{props.name}</h5>
+          <p>{props.description}</p>
+        </CardDescription>
+        <CardAction>
+          <ButtonGroup size="sm" isAttached variant="outline">
+            <IconButton
+              aria-label="Add to friends"
+              icon={<i className="fas fa-minus"></i>}
+              variant="solid"
+            />
+            <Button colorScheme="blue" variant="unstyled">
+              1
+            </Button>
+            <IconButton
+              aria-label="Add to friends"
+              icon={<i className="fas fa-plus"></i>}
+              variant="solid"
+            />
+          </ButtonGroup>
+          <Button
+            rightIcon={<i className="fas fa-shopping-cart"></i>}
+            bg="var(--primary-color)"
+            color="white"
+            _hover={{ bg: "var(--primary-color-dark)" }}
+          >
+            Add to Cart
+          </Button>
+        </CardAction>
+      </CardContent>
+    </Card>
+  );
+}
+
+export default FoodCard;
 
 const Card = styled.div`
   padding: 0;
@@ -62,72 +140,3 @@ const CardDescription = styled.div`
 `;
 
 const CardAction = styled(ContentHeader)``;
-
-function FoodCard(props) {
-  return (
-    <Card>
-      <ImageDiv>
-        <img src={props.image} alt={props.name} />
-      </ImageDiv>
-      <CardContent>
-        <ContentHeader>
-          <div>
-            <Button
-              rightIcon={<i className="far fa-heart"></i>}
-              variant="unstyled"
-              color="var(--color-dark)"
-              _focus={{
-                outline: "none",
-              }}
-            />
-            <Button
-              rightIcon={<i className="fas fa-info-circle"></i>}
-              variant="unstyled"
-              color="var(--color-dark)"
-              _focus={{
-                outline: "none",
-              }}
-            />
-          </div>
-          <h5>
-            <span className={props.promotion.isPromotion ? 'promotion__span text-muted' : ''}>${props.price}</span>
-            {props.promotion.isPromotion && (
-              <span className="mx-2 text-decoration-none">{`$${props.promotion.price}`}</span>
-            )}
-          </h5>
-        </ContentHeader>
-        <CardDescription>
-          <h5>{props.name}</h5>
-          <p>{props.description}</p>
-        </CardDescription>
-        <CardAction>
-          <ButtonGroup size="sm" isAttached variant="outline">
-            <IconButton
-              aria-label="Add to friends"
-              icon={<i className="fas fa-minus"></i>}
-              variant="solid"
-            />
-            <Button colorScheme="blue" variant="unstyled">
-              1
-            </Button>
-            <IconButton
-              aria-label="Add to friends"
-              icon={<i className="fas fa-plus"></i>}
-              variant="solid"
-            />
-          </ButtonGroup>
-          <Button
-            rightIcon={<i className="fas fa-shopping-cart"></i>}
-            bg="var(--primary-color)"
-            color="white"
-            _hover={{ bg: "var(--primary-color-dark)" }}
-          >
-            Add to Cart
-          </Button>
-        </CardAction>
-      </CardContent>
-    </Card>
-  );
-}
-
-export default FoodCard;

@@ -1,35 +1,30 @@
 import styled from "styled-components";
 import { CartIcon } from "../../../assets";
 
+
 const ButtonWrapper = styled.button`
   cursor: pointer;
   font: inherit;
   border: none;
-  background-color: #4d1601;
+  background-color: inherit;
   color: white;
-  padding: 0.75rem 3rem;
+  padding: 0rem 0rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  border-radius: 25px;
   font-weight: bold;
+  transition: .3s ease-in-out;
   &:hover,
   &:active {
-    background-color: #2c0d00;
-    .badge__span {
-      background-color: #92320c;
-    }
+    transform: scale(1.2);
+    transition: .3s ease-in-out;
   }
   .icon__span {
     width: 1.35rem;
-    height: 1.35rem;
-    margin-right: 0.5rem;
+    height: auto;
   }
   .badge__span {
-    background-color: #b94517;
-    padding: 0.25rem 1rem;
-    border-radius: 25px;
-    margin-left: 1rem;
+    padding: 0rem 0.35rem;
     font-weight: bold;
   }
 `;
@@ -40,7 +35,6 @@ function HeaderCartButton() {
       <span className="icon__span">
         <CartIcon />
       </span>
-      <span>Your Cart</span>
       <span className="badge__span">3</span>
     </ButtonWrapper>
   );
