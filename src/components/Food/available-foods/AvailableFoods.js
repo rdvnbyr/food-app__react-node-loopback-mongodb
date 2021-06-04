@@ -2,7 +2,21 @@ import { DUMMY_Food } from "../../../dummy-data";
 import styled, { keyframes } from "styled-components";
 
 import { Card } from "../../UIElements";
-import { FoodsItem } from "./FoodsItem"
+import { FoodsItem } from "./FoodsItem";
+
+export function AvailableFoods() {
+  return (
+    <AvailableSection>
+      <Card>
+        <ul>
+          {DUMMY_Food.map((meal) => (
+            <FoodsItem key={meal.id} {...meal} />
+          ))}
+        </ul>
+      </Card>
+    </AvailableSection>
+  );
+}
 
 const animate = keyframes`
   from {
@@ -26,17 +40,3 @@ const AvailableSection = styled.section`
     padding: 0;
   }
 `;
-
-export function AvailableFoods() {
-  return (
-    <AvailableSection>
-      <Card>
-        <ul>
-          {DUMMY_Food.map((meal) => (
-            <FoodsItem key={meal.id} {...meal}/>
-          ))}
-        </ul>
-      </Card>
-    </AvailableSection>
-  );
-}

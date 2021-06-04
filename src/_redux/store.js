@@ -7,6 +7,7 @@ import { rootReducer, rootSaga } from "./rootReducer";
 
 //create saga-middleware
 const sagaMiddleware = createSagaMiddleware();
+
 const middleware = [
   ...getDefaultMiddleware({
     immutableCheck: false,

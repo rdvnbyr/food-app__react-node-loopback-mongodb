@@ -1,11 +1,11 @@
-import { authActionTypes } from "./_actions";
+import { authActionTypes } from "./_actionTypes";
 
 const initialState = {
   loading: false,
   error: "",
   isLogin: false,
   user: {},
-  access_token: "",
+  accessToken: "",
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -23,7 +23,7 @@ export const authReducer = (state = initialState, action) => {
         error: "",
         isLogin: true,
         user: action.payload.user,
-        access_token: action.payload.access.id,
+        accessToken: action.payload.access.id,
       };
     case authActionTypes.LOGIN_FAIL:
       return {

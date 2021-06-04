@@ -1,14 +1,4 @@
-const PREFIX = "[product]";
-
-export const productActionTypes = {
-  GET_PRODUCTS: `${PREFIX}GET_PRODUCTS`,
-  GET_PRODUCTS_SUCCESS: `${PREFIX}GET_PRODUCTS_SUCCESS`,
-  GET_PRODUCTS_FAIL: `${PREFIX}GET_PRODUCTS_FAIL`,
-
-  GET_PRODUCT: `${PREFIX}GET_PRODUCT`,
-  GET_PRODUCT_SUCCESS: `${PREFIX}GET_PRODUCT_SUCCESS`,
-  GET_PRODUCT_FAIL: `${PREFIX}GET_PRODUCT_FAIL`,
-};
+import { productActionTypes } from "./_actionTypes";
 
 export const productActions = {
   // Get Products Action

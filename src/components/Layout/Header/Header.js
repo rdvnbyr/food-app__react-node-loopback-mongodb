@@ -4,32 +4,6 @@ import HeaderCartButton from "./HeaderCartButton";
 import { HeaderLinks } from "./HeaderLinks";
 import { HeaderAuthLinks } from "./HeaderAuthLinks";
 
-const HeaderDiv = styled.header`
-  box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5rem;
-  line-height: 5rem;
-  background: var(--primary-color);
-  color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  z-index: 10;
-  .content {
-    padding: 0 2%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-`;
-
-const AuthLinksWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 // const MainImageDiv = styled.div`
 //   width: 100%;
 //   height: 25rem;
@@ -68,3 +42,29 @@ function Header() {
 }
 
 export default Header;
+
+const HeaderDiv = styled.header`
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+  line-height: 5rem;
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  .content {
+    padding: 0 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+const AuthLinksWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;

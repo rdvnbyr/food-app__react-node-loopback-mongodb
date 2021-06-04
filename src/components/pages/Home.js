@@ -1,6 +1,5 @@
 
 import styled from "styled-components";
-
 import Food from "../Food/Food";
 
 const HomePage = styled.main`

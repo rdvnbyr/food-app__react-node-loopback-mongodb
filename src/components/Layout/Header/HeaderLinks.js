@@ -1,6 +1,22 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+export function HeaderLinks() {
+  return (
+    <WrapperDiv>
+      <NavLink exact to="/" activeClassName="active">
+        HOME
+      </NavLink>
+      <NavLink exact to="/about">
+        ABOUT
+      </NavLink>
+      <NavLink exact to="/contact">
+        CONTACT
+      </NavLink>
+    </WrapperDiv>
+  );
+}
+
 const WrapperDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -19,19 +35,3 @@ const WrapperDiv = styled.div`
     transform: scale(1.2);
   }
 `;
-
-export function HeaderLinks() {
-  return (
-    <WrapperDiv>
-      <NavLink exact to="/" activeClassName="active">
-        HOME
-      </NavLink>
-      <NavLink exact to="/about">
-        ABOUT
-      </NavLink>
-      <NavLink exact to="/contact">
-        CONTACT
-      </NavLink>
-    </WrapperDiv>
-  );
-}

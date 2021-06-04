@@ -81,7 +81,7 @@ function LoginPage() {
       <ButtonWrapper>
         <div>
           Do not you have an account yet
-          <Link to="/signup">
+          <Link to="/auth/signup">
             <span className="mx-2 btn-link">Sign up</span>
           </Link>
         </div>

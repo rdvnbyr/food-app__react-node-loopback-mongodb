@@ -2,6 +2,22 @@ import styled from "styled-components";
 
 import { FoodItemForm } from "./food-item-form/FoodItemForm";
 
+export function FoodsItem(props) {
+  const price = `$${props.price.toFixed(2)}`;
+  return (
+    <List>
+      <div>
+        <Title>{props.name}</Title>
+        <Description>{props.description}</Description>
+        <Price>{price}</Price>
+      </div>
+      <div>
+        <FoodItemForm item={props} />
+      </div>
+    </List>
+  );
+}
+
 const List = styled.li`
   display: flex;
   justify-content: space-between;
@@ -24,19 +40,3 @@ const Price = styled.div`
   color: #ad5502;
   font-size: 1.25rem;
 `;
-
-export function FoodsItem(props) {
-  const price = `$${props.price.toFixed(2)}`;
-  return (
-    <List>
-      <div>
-        <Title>{props.name}</Title>
-        <Description>{props.description}</Description>
-        <Price>{price}</Price>
-      </div>
-      <div>
-        <FoodItemForm item={props} />
-      </div>
-    </List>
-  );
-}

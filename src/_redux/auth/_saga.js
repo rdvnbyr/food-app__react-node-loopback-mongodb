@@ -1,6 +1,7 @@
 import axios from "axios";
 import { call, put, takeEvery, select } from "redux-saga/effects";
-import { authActions, authActionTypes } from "./_actions";
+import { authActions } from "./_actions";
+import { authActionTypes } from "./_actionTypes";
 
 function* login(action) {
   try {
@@ -10,14 +11,14 @@ function* login(action) {
         action.payload.user
       );
     });
-    const fetchUserData = yield call(async () => {
+    const getUserData = yield call(async () => {
       return await axios.get(
         `http://localhost:8080/api/clients/${response.data.userId}?access_token=${response.data.id}`
       );
     });
     yield put(
       authActions.login.success({
-        user: fetchUserData.data,
+        user: getUserData.data,
         access: response.data,
       })
     );
@@ -48,14 +49,12 @@ function* register(action) {
 }
 
 function* logout() {
-  const { access_token } = yield select((state) => ({
-    access_token: state.auth.access_token,
-  }));
   try {
+    const accessToken = yield select((state) => state.auth.accessToken);
     yield call(async () => {
       try {
         return await axios.post(
-          `http://localhost:8080/api/clients/logout?access_token=${access_token}`
+          `http://localhost:8080/api/clients/logout?access_token=${accessToken}`
         );
       } catch (error) {
         throw error;
@@ -63,7 +62,7 @@ function* logout() {
     });
     yield put(authActions.logout.success());
   } catch (err) {
-    const error = new Error("Register Action is failed.");
+    const error = "Logout Action is failed.";
     yield put(authActions.logout.fail(error));
   }
 }

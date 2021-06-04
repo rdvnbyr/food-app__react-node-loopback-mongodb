@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { desaturate} from "polished";
+import { desaturate } from "polished";
+
+export const Button = (props) => {
+  return <ButtonWrapper {...props}>{props.text}</ButtonWrapper>;
+};
 
 const ButtonWrapper = styled.button.attrs((props) => ({
   type: props.type || "button",
@@ -13,11 +17,7 @@ const ButtonWrapper = styled.button.attrs((props) => ({
   height: 3rem;
   &:hover,
   &:active {
-    background-color: ${props => desaturate(0.3, props.color || '#8a2b06')};
-    border-color: ${props => desaturate(0.3, props.color || '#8a2b06')};
+    background-color: ${(props) => desaturate(0.3, props.color || "#8a2b06")};
+    border-color: ${(props) => desaturate(0.3, props.color || "#8a2b06")};
   }
 `;
-
-export const Button = (props) => {
-  return <ButtonWrapper {...props}>{props.text}</ButtonWrapper>;
-};

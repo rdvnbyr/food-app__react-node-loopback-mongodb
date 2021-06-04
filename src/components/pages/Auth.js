@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Redirect, useLocation } from "react-router-dom";
-
 import Login from "../Layout/auth/Login";
 import SignUp from "../Layout/auth/SignUp";
 

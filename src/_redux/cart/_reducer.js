@@ -1,4 +1,4 @@
-//import { cartActionTypes } from "./_actions";
+// import { cartActionTypes } from "./_actionTypes";
 
 const initialState = {};
 

@@ -1,45 +1,12 @@
 import { useRef } from "react";
+import { Field } from "formik";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-
 import { FormikHandler } from "./FormikHandler";
 import { Input, UIButton } from "../../UIElements";
 import { authActions } from "../../../_redux/auth";
-
-const WrapperForm = styled.div`
-  width: 600px;
-  & form {
-    width: inherit;
-  }
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-const Title = styled.div`
-  color: var(--color-dark);
-  font-size: 1.8rem;
-  text-align: center;
-  padding-top: 1.25rem;
-  font-weight: bold;
-`;
-const FieldWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0.8rem 2.5rem;
-  & label {
-    text-align: left;
-    font-size: 1.25rem;
-  }
-`;
-const ButtonWrapper = styled(FieldWrapper)`
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
 
 const signUpValidationSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
@@ -66,6 +33,7 @@ const initialValues = {
   repeatPassword: "",
 };
 
+// Component Start
 function SignupPage() {
   const dispatch = useDispatch();
   const submitHandler = (values) => {
@@ -149,7 +117,7 @@ function SignupPage() {
       <ButtonWrapper>
         <div>
           Do you already have an account
-          <Link to="/login">
+          <Link to="/auth/login">
             <span className="mx-2 btn-link">Login</span>
           </Link>
         </div>
@@ -160,3 +128,35 @@ function SignupPage() {
 }
 
 export default SignupPage;
+
+const WrapperForm = styled.div`
+  width: 600px;
+  & form {
+    width: inherit;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+const Title = styled.div`
+  color: var(--color-dark);
+  font-size: 1.8rem;
+  text-align: center;
+  padding-top: 1.25rem;
+  font-weight: bold;
+`;
+const FieldWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 2.5rem;
+  & label {
+    text-align: left;
+    font-size: 1.25rem;
+  }
+`;
+const ButtonWrapper = styled(FieldWrapper)`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;

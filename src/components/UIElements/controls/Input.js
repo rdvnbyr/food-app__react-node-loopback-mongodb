@@ -25,7 +25,9 @@ export const Input = ({
         <FeedbackLabel
           errors={touched[field.name] && errors[field.name] && true}
         >
-          {errors[field.name] || `Please enter ${label}`}
+          {touched[field.name] && errors[field.name]
+            ? errors[field.name]
+            : `Please enter ${label}`}
         </FeedbackLabel>
       )}
     </>

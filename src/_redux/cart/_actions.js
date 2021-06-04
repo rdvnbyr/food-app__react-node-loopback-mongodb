@@ -1,5 +1,3 @@
-//const PREFIX = "[cart]";
-
-export const cartActionTypes = {};
+// import { cartActionTypes } from "./_actionTypes"
 
 export const cartActions = {};

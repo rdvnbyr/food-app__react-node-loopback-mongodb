@@ -6,7 +6,6 @@ import { FoodSummary } from "./food-summary/FoodSummary";
 import FoodCard from "./food-card/FoodCard";
 
 function Food() {
-  
   const { products } = useSelector(
     (state) => ({
       products: state.product.products,
@@ -25,9 +24,7 @@ function Food() {
       <div className="row justify-content-center my-5">
         {products &&
           products.length > 0 &&
-          products.map((food) => {
-            return <FoodCard key={food.id} {...food} />;
-          })}
+          products.map((product) => <FoodCard key={product.id} {...product} />)}
       </div>
     </>
   );

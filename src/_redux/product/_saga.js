@@ -1,6 +1,7 @@
 import axios from "axios";
 import { call, put, takeEvery } from "redux-saga/effects";
-import { productActions, productActionTypes } from "./_actions";
+import { productActions } from "./_actions";
+import { productActionTypes} from "./_actionTypes"
 
 function* getProducts() {
   try {

@@ -1,21 +1,4 @@
-const PREFIX = "[auth]";
-
-export const authActionTypes = {
-  //*Login
-  LOGIN: `${PREFIX}LOGIN`,
-  LOGIN_SUCCESS: `${PREFIX}LOGIN_SUCCESS`,
-  LOGIN_FAIL: `${PREFIX}LOGIN_FAIL`,
-
-  //*Register
-  REGISTER: `${PREFIX}REGISTER`,
-  REGISTER_SUCCESS: `${PREFIX}REGISTER_SUCCESS`,
-  REGISTER_FAIL: `${PREFIX}REGISTER_FAIL`,
-
-  //*Logout
-  LOGOUT: `${PREFIX}LOGOUT`,
-  LOGOUT_SUCCESS: `${PREFIX}LOGOUT_SUCCESS`,
-  LOGOUT_FAIL: `${PREFIX}LOGOUT_FAIL`,
-};
+import { authActionTypes } from "./_actionTypes";
 
 export const authActions = {
   // Login Action
